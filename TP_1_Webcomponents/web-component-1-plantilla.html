@@ -10,27 +10,26 @@
 <x-abm-crud></x-abm-crud>
 
 <script>
-    console.log('Introducción a WebComponents');
-    
     class ABMCrud extends HTMLElement {
         constructor() {
             super();
+            
+            // Crear elementos principales
             this._title = document.createElement('h2');
             this._title.innerText = 'Seleccione una opción:';
-            this._buttonList = document.createElement('button');
-            this._buttonList.innerText = 'Listar';
-            this._buttonCreate = document.createElement('button');
-            this._buttonCreate.innerText = 'Crear';
-            this._buttonEdit = document.createElement('button');
-            this._buttonEdit.innerText = 'Editar';
-            this._buttonDelete = document.createElement('button');
-            this._buttonDelete.innerText = 'Eliminar';
     
-            this._buttonList.addEventListener('click', this.listData.bind(this));
-            this._buttonCreate.addEventListener('click', this.createData.bind(this));
-            this._buttonEdit.addEventListener('click', this.editData.bind(this));
-            this._buttonDelete.addEventListener('click', this.deleteData.bind(this));
+            // Estilos para el título
+            this._title.style.fontFamily = 'Arial, sans-serif';
+            this._title.style.fontSize = '1.5rem';
+            this._title.style.marginBottom = '20px';
     
+            // Botones
+            this._buttonList = this._createButton('Listar');
+            this._buttonCreate = this._createButton('Crear');
+            this._buttonEdit = this._createButton('Editar');
+            this._buttonDelete = this._createButton('Eliminar');
+    
+            // Tabla
             this._table = document.createElement('table');
             this._table.innerHTML = `
                 <thead>
@@ -42,15 +41,62 @@
                 </thead>
                 <tbody></tbody>
             `;
+
+            // Estilos para la tabla
+            this._table.style.width = '30%';
+            this._table.style.borderCollapse = 'collapse'; // Colapsar bordes
+            this._table.style.marginTop = '20px';
+            this._table.style.border = '2px solid #4CAF50'; // Borde sólido verde
+
+            // Estilos para las filas (tr) del cuerpo (tbody)
+            const tbodyRows = this._table.querySelectorAll('tbody tr');
+            tbodyRows.forEach(row => {
+                row.style.borderBottom = '1px solid #4CAF50'; // Borde inferior sólido verde
+            });
+
+            // Estilos para las celdas de encabezado (th)
+            const thCells = this._table.querySelectorAll('th');
+            thCells.forEach(cell => {
+                cell.style.border = '1px solid #4CAF50'; // Borde sólido verde
+                cell.style.padding = '8px';
+            });
+
+            // Estilos para las celdas de datos (td)
+            const tdCells = this._table.querySelectorAll('td');
+            tdCells.forEach(cell => {
+                cell.style.border = '1px solid #4CAF50'; // Borde sólido verde
+                cell.style.padding = '8px';
+            });
+            
+            // Agregar eventos a los botones
+            this._buttonList.addEventListener('click', this.listData.bind(this));
+            this._buttonCreate.addEventListener('click', this.createData.bind(this));
+            this._buttonEdit.addEventListener('click', this.editData.bind(this));
+            this._buttonDelete.addEventListener('click', this.deleteData.bind(this));
     
-            this._data = [];
-    
+            // Agregar elementos al componente
             this.appendChild(this._title);
             this.appendChild(this._buttonList);
             this.appendChild(this._buttonCreate);
             this.appendChild(this._buttonEdit);
             this.appendChild(this._buttonDelete);
             this.appendChild(this._table);
+        }
+    
+        // Método privado para crear botones con estilos
+        _createButton(label) {
+            const button = document.createElement('button');
+            button.innerText = label;
+            button.style.fontFamily = 'Arial, sans-serif';
+            button.style.fontSize = '1rem';
+            button.style.padding = '10px 20px';
+            button.style.marginRight = '10px';
+            button.style.backgroundColor = '#4CAF50';
+            button.style.color = 'white';
+            button.style.border = 'none';
+            button.style.cursor = 'pointer';
+            button.style.borderRadius = '5px';
+            return button;
         }
     
         listData() {
@@ -116,8 +162,7 @@
                 console.error('Error: Debe ingresar un nombre de usuario y un saldo válidos.');
             }
         }
-        
-             
+                
         editData() {
             // Solicitar al usuario el ID del contacto a editar
             const contactId = prompt('Ingrese el ID del contacto a editar:');
