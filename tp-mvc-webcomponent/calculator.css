@@ -1,41 +1,66 @@
-
-.numberButton
-{
-	background-color: blue;
-	color: #FFFFFF;
-	border-color: #FFFFFF;
-	border-radius: 6px;
-	width: 100%;
+/* Estilo del contenedor de la calculadora */
+.calculator-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
+    grid-gap: 10px; /* Espacio entre botones */
+    max-width: 250px; /* Ancho máximo */
+    margin: 0 auto; /* Centrar horizontalmente */
 }
 
-.operatorButton
-{
-	background-color: #00FF04;
-	color: #FFFFFF;
-	border-color: #FFFFFF;
-	border-radius: 6px;
-	width: 100%;
+/* Estilo de los botones */
+.numberButton, .operatorButton, .clearButton, .calculateButton {
+    background-color: #e0e0e0; /* Gris claro */
+    color: #000000; /* Negro para texto */
+    border: 1px solid #d4d4d4; /* Gris para el borde */
+    border-radius: 8px;
+    font-size: 1.2rem;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
-.clearButton
-{
-	background-color: #FF0000;
-	color: #FFFFFF;
-	border-color: #FFFFFF;
-	width: 100%;
-	border-radius: 6px;
+.numberButton:hover, .operatorButton:hover, .clearButton:hover, .calculateButton:hover {
+    background-color: #cfcfcf; /* Gris un poco más oscuro al hacer hover */
 }
 
-.calculateButton
-{
-	background-color: #FFB900;
-	color: #FFFFFF;
-	border-color: #FFFFFF;
-	width: 100%;
-	border-radius: 6px;
+.operatorButton {
+    background-color: #4CAF50; /* Verde medio */
+    color: #FFFFFF;
+    border: 1px solid #45A049; /* Verde más oscuro para el borde */
 }
 
-.displayResult
-{
-	border-radius: 6px;
+.operatorButton:hover {
+    background-color: #388E3C; /* Verde más oscuro al hacer hover */
+}
+
+.clearButton {
+    background-color: #f44336; /* Rojo claro */
+    color: #FFFFFF;
+    border: 1px solid #d32f2f; /* Rojo más oscuro para el borde */
+}
+
+.clearButton:hover {
+    background-color: #c62828; /* Rojo más oscuro al hacer hover */
+}
+
+.calculateButton {
+    background-color: #FF9800; /* Naranja */
+    color: #FFFFFF;
+    border: 1px solid #FB8C00; /* Naranja más oscuro para el borde */
+}
+
+.calculateButton:hover {
+    background-color: #EF6C00; /* Naranja más oscuro al hacer hover */
+}
+
+.displayResult {
+    border-radius: 8px;
+    border: none; /* Sin borde */
+    padding: 20px;
+    font-size: 2rem;
+    background-color: #ffffff; /* Fondo blanco */
+    color: #000000; /* Texto negro */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra interior */
+    width: 100%;
 }
