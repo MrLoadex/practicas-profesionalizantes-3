@@ -41,7 +41,3 @@ API Chat es una aplicación web que permite a los usuarios conectarse y chatear 
 - `express-session`: Middleware para manejar sesiones de usuario.
 - `socket.io`: Biblioteca para la comunicación en tiempo real.
 - `crypto-js`: Biblioteca para cifrado de mensajes.
-
-## Contribuciones
-
-Las contribuciones son bienvenidas. Si deseas mejorar la aplicación, siéntete libre de hacer un fork del repositorio y enviar un pull request.
